@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block content %}
+
+<!--Navbar code-->
+<nav class=" navbar navbar-expand-lg navbar-dark fixed-top bg-light">
+    <div class="container">
+        <a class="navbar-brand br" href="{% url 'userhome' %}"><h4 class="mycake">My Cake</h4></a>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+            
+        </div>
+    </div>
+</nav>
+<!--Middle Section-->
+<h1 style="padding-left:200px;padding-top: 30px;font-family: cursive;">CheckoutForm</h1>
+<form action="checkoutform" method="POST">
+    {% csrf_token %}
+    <div style="padding-left: 350px;padding-top: 30px;">
+        <div class="row ">
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Enter Your User Name" name="uname" aria-label="User name" required>
+          </div>
+        </div><br>
+        <div class="row ">
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Enter Your Email" name="email" aria-label="email" required>
+          </div>
+        </div><br>
+        <div class="row ">
+            <div class="col-md-4">
+              <input type="text" class="form-control" placeholder="Enter Your Address" name="address" aria-label="Address" required>
+            </div>
+          </div><br>
+          <div class="row ">
+            <div class="col-md-2">
+              <input type="text" class="form-control" placeholder="Enter Your Location" name="loc" aria-label="location" required>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" placeholder="Enter Zip code" name="zip" aria-label="zip" required>
+              </div>
+          </div><br>
+          <div class="row ">
+            <div class="col-md-2">
+              <label for="">Expected Date</label>
+              <input type="date" class="form-control" placeholder="Expected Date" name="dt" aria-label="dt" required>
+            </div>
+            <div class="col-md-2">
+              <label for="">Expected Time</label>
+              <input type="time" class="form-control" placeholder="Expected Time" name="tm" aria-label="tm" required>
+            </div>
+          </div><br>
+    </div>
+    <!--Radio Button-->
+    <div style="padding-left: 350px;">
+      <div class="d-block my-3">
+        <div class="custom-control custom-radio">
+          <input id="credit" name="paymentmethod" type="radio" value="Cash On Delivery" class="custom-control-input" checked required>
+          <label class="custom-control-label" for="credit">Cash On Delivery</label>
+          </div>
+        <div class="custom-control custom-radio">
+          <input id="debit" name="paymentmethod" type="radio" value="Online-Payment" class="custom-control-input" required>
+          <label class="custom-control-label" for="debit">Online Payment</label>
+        </div>
+      </div>
+    </div>
+    <!--button-->
+    <div style="padding-left: 470px;padding-top: 10px;padding-bottom: 20px;">
+      <button class="btn btn-dark btn-md btn-block" type="submit" >Checkout</button>
+    </div>
+</form>
+
+
+
+
+
+{%endblock%}

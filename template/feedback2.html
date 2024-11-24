@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block content %}
+
+
+<h1 class="fd">Our Customers Reviews</h1>
+<form action="dispfeedbacks" >
+   <div class="card text-center ">
+        <div class="card-body ">
+            {% for i in fd %}
+          <h5 class="card-title" style="color: rgb(245, 144, 144);">{{i.username}}</h5>
+          <p class="card-text "> {{i.feedback}}</p>
+          {% endfor %}
+        </div>
+    </div>
+</form>
+
+{%endblock%}

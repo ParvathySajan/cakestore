@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block content %}
+<!--Navbar-->
+<nav class=" navbar navbar-expand-lg navbar-dark fixed-top bg-white">
+    <div class="container">
+      <a class="navbar-brand br" href="#"><b class="mycake">My Cake</b></a>
+    </div>
+</nav>
+
+<!--Middle Section-->
+<div class="container text-center bg-light">
+  {% for i in cake %}
+    <div class="card text-center mx-3 my-3" style="width: 18rem; display: inline-block;">
+        <img src="{{i.cakeimage.url}}"class="card-img-top" alt="cakeimage">
+        <div class="card-body">
+            <h5 class="card-title">{{i.cakename}}</h5>
+            <p class="card-text">{{i.description}}</p>
+            <!--<h6>{{i.category}}</h6>-->
+            <h5><b>RS {{i.price}}</b></h5>
+            <div class="">
+              <button class="btn btn-primary"><a href=" addtocart/{{i.id }}" class="btn btn-primary">Add to Cart</a></button>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+
+<!--Go Back-->
+<div style="padding-left: 1200px;">
+  <a class="nav-item nav-link ln" href="{% url 'display' %}"><b>Go Back</b> </a>
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block content %}
+<nav class=" navbar navbar-expand-lg navbar-dark fixed-top bg-light">
+    <div class="container">
+        <a class="navbar-brand br" href="{% url 'userhome' %}"><h4 class="mycake">My Cake</h4></a>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+        </div>
+    </div>
+</nav>
+
+<!--Table starting-->
+<div style="height: 800px;width: 1000px;padding-left: 250px;padding-top: 50px;" >
+    <form action="disp">
+        <table class="table table-striped">
+            <tr>
+                <th></th>
+                <th>Cake Name</th>
+                <th>Cake Image</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            {% for i in c %}
+            <tr>
+                <td></td>
+                <td>{{i.cakename}}</td>
+                <td><img src="{{i.cakeimage.url}}" width="100" height="70"></td>
+                <td>{{i.price}}</td>
+                <!--<td><a href="remove/{{i.id}}"><b>Remove from cart</b></a></td>-->
+                <td><button class=" btn-dark"><a href="remove/{{i.id}}" class="btn btn-dark">Remove</a></button></td>
+            </tr>
+            {% endfor %}
+        </table><br><br>
+        <div>
+            <h4>Total Items in Cart: {{t}}</h4><br>
+            <h3>Total Amount: {{ta}}</h3><br><br>
+        </div>
+        <div class="">
+            <button class=" btn-dark"><a href="{% url 'place' %}" class="btn btn-dark">Place Order</a></button>
+        </div>
+    </form>
+</div>
+
+{%endblock%}

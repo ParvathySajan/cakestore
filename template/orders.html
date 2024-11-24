@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block content %}
+<nav class=" navbar navbar-expand-lg navbar-dark fixed-top bg-light">
+    <div class="container">
+        <a class="navbar-brand br" href="{% url 'adminhome' %}"><h4 class="mycake">My Cake</h4></a>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+            
+        </div>
+    </div>
+</nav>
+<!--adminpage-->
+<div style="width: 1000px;padding-left: 250px;padding-top: 50px;" >
+    <form action="disp">
+        <table class="table table-striped">
+            <tr>
+                <th>No</th>
+                <th>Customer</th>
+                <th>Delivery Address</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            {% for i in order %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.customer}}</td>
+                <td>{{i.address}}</td>
+                <td>{{i.amount}}</td>
+                <td>{{i.status}}</td>
+                <!--<td><a href="confirm/{{i.id}}">Confirm</a></td>-->
+                <td><button class="btn"><a href="confirm/{{i.id}}" class="btn btn-dark">Confirm</a></button></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+
+{%endblock%}

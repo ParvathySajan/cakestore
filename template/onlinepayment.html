@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block content %}
+<!--navbar-->
+<nav class=" navbar navbar-expand-lg navbar-dark fixed-top bg-secondary">
+    <div class="container">
+        <a class="navbar-brand br" href="#"><h4>My Cake</h4></a>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+            
+        </div>
+    </div>
+</nav>
+<!--Middle Section-->
+<div>
+    <h1>Make Your Payment</h1>
+    <form action="onlinesuccess" method="POST">
+        {% csrf_token %}
+        <div class="row ">
+            <div class="col-md-5">
+                <label for="">UserName </label>
+              <input type="text" class="form-control" value="{{name}}" name="name" aria-label="amount">
+            </div>
+          </div><br>
+        <div class="row ">
+            <div class="col-md-5">
+                <label for="">Amount </label>
+              <input type="text" class="form-control" value="{{amt}}" name="amt" aria-label="amount">
+            </div>
+        </div><br>
+        <!-- RAZORPAY INTEGRATION HERE -->
+        <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="rzp_test_BxZvEpl01zwGtx"
+            data-amount={{payment.amt}} data-currency="INR" data-order_id="{{payment.id}}"
+            data-buttontext="Pay with Razorpay" data-name="Razorpay Merchant" data-description="Pay With Razorpay"
+            data-image="https://cdn4.vectorstock.com/i/1000x1000/70/53/mobile-payment-icon-flat-design-vector-6827053.jpg"
+            data-prefill.name="PC" data-prefill.email="pc@kevinjoseminj.com" data-theme.color="blue">
+            </script>
+    </form>
+</div>
+
+
+{%endblock%}

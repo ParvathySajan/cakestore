@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block content %}
+<!--navbar-->
+
+<nav class=" navbar navbar-expand-lg navbar-dark fixed-top bg-light" >
+  <div class="container">
+    <a class="navbar-brand br" href="{% url 'index' %}"><h4 class="mycake">MyCake</h4></a>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+      </div>
+  </div>
+</nav>
+
+<!--loginform-->
+
+<h1 style="padding-top: 50px;;padding-left: 550px;font-family: cursive;font-size: 30px;color: black;">Login Here</h1>
+  <div style="padding-left: 480px;padding-top: 20px;background-color: rgb(253, 252, 253);">
+    
+    <form action="log" method="POST">
+      {% csrf_token %}
+      <div height="600px">
+        <div class="row ">
+          <div class="col-md-5">
+            <input type="text" class="form-control" placeholder="  Enter Your User Name" name="uname" aria-label="User name">
+          </div>
+        </div><br>
+        <div class="row ">
+          <div class="col-md-5">
+            <input type="text" class="form-control" placeholder="  Enter Your Password" name="password" aria-label="User name">
+          </div>
+        </div><br>
+      </div>
+      <div style="padding-left: 130px;font-family: cursive;">
+        <input type="submit" name="" id="" value="Login">
+      </div>
+    </form>  
+  
+    {% for message in messages %}
+    <h3>{{message}}</h3>
+    {% endfor %}
+
+    <div style="padding: 90px;font-family: cursive;"> <a class="nav-item nav-link ln" href="{% url 'register' %}"><b style="color: black;">Register Now</b></a></div>
+  </div>
+  
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
